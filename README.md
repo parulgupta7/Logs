@@ -1,7 +1,7 @@
 # Logs
 
 ## Introduction
-Developed a python module to interact with databse and retrieve useful information.
+Developed a python module to interact with database and retriev useful information.
 
 ## Files Included
 * analysis.sql: This file contains all the views created requird for information retrieval.
