@@ -1,4 +1,6 @@
+#!usr/bin/env python
 import psycopg2
+
 
 # Fuction to return psycopg2 connection
 def connection(database_name="news"):
@@ -10,18 +12,20 @@ def connection(database_name="news"):
     except:
         print("Error: cannot connect")
 
+
 # Function to find the most popular article authors of all time
 def top_authors():
     session, cursor = connection()
     q = """SELECT authors.name,
         (SELECT SUM(views) FROM author_view2 WHERE
         author_view2.id = authors.id) FROM authors;"""
-    cursor.execute(q);
+    cursor.execute(q)
     result = cursor.fetchall()
-    session.close()
     cursor.close()
+    session.close()
     for i in range(0, len(result), 1):
         print result[i][0] + ": " + str(result[i][1]) + ' views'
+
 
 # Funtion to find error requests
 def Error():
@@ -30,9 +34,11 @@ def Error():
            WHERE error_percent >= 1.0"""
     cursor.execute(q)
     result = cursor.fetchall()
+    cursor.close()
     session.close()
     for i in range(0, len(result), 1):
         print str(result[i][0]) + " " + str(result[i][1]) + "%"
+
 
 # Function to find top 3 articles
 def top3_articles():
@@ -42,21 +48,19 @@ def top3_articles():
         GROUP BY title ORDER BY count DESC;"""
     cursor.execute(q)
     result = cursor.fetchall()
-    session.close()
     cursor.close()
-    print "Top 3 popular articles are:\n"
+    session.close()
     for i in range(0, 3, 1):
-        print result[i][0]+"->"+ str(result[i][1])
-
-
+        print result[i][0] + "->" + str(result[i][1])
 
 
 print"\n"
+print "Top 3 popular articles are:\n"
 top3_articles()
-print"\n"
+print"\n\n"
+print "Popular authors are:\n"
 top_authors()
-print"\n"
+print"\n\n"
+print "Days with errors more than 1%:\n"
 Error()
 print"\n"
-
-
