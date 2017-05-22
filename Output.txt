@@ -5,10 +5,17 @@ Bears love berries, alleges bear->253801
 Bad things gone, say good people->170098
 
 
+
+Popular authors are:
+
 Ursula La Multa: 507594 views
 Rudolf von Treppenwitz: 423457 views
 Anonymous Contributor: 170098 views
 Markoff Chaney: 84557 views
 
 
+
+Days with errors more than 1%
+
 2016-07-17 2.2626862468%
+
